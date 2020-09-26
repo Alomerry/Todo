@@ -2,6 +2,13 @@ spring:
   data:
     mongodb:
       uri: mongodb://qmgo:120211@cloudmo.top:27017/qmgo
+  session:
+    store-type: redis
+  redis:
+    database: 0
+    host: cloudmo.top
+    password: 120211
+    port: 6379
 logging:
   level:
     root: debug

@@ -1,9 +1,10 @@
 package controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSONObject;
+import core.Result;
+import core.ResultCode;
+import model.user.vo.LoginRequest;
+import org.springframework.web.bind.annotation.*;
 import service.UserService;
 
 import javax.annotation.Resource;
@@ -15,11 +16,11 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    String home(@RequestParam("name") String name,
-                @RequestParam("passwd") String passwd) {
-        if (userService.Login(name, passwd)) {
-            return "login success";
-        }
-        return "Hello World!";
+    Result Login(@ModelAttribute LoginRequest request) {
+//        if (userService.Login(request.getName(), request.getPasswd())) {
+//            System.out.println("success");
+//            return new Result().setCode(ResultCode.OK).setData(new JSONObject());
+//        }
+        return new Result().setCode(ResultCode.FORBIDDEN);
     }
 }

@@ -4,6 +4,7 @@ import store from '../store/index'
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.xsrfCookieName = 'csrftoken';
+
 export default {
   updateTodo(id, map) {
     let params = {};

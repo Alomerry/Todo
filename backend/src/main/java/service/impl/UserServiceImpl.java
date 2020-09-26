@@ -1,13 +1,11 @@
 package service.impl;
 
 import dao.UserDao;
-import model.User;
-import org.springframework.data.domain.Example;
+import model.user.po.User;
 import org.springframework.stereotype.Service;
 import service.UserService;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {

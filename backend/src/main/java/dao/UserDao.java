@@ -1,6 +1,6 @@
 package dao;
 
-import model.User;
+import model.user.po.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
