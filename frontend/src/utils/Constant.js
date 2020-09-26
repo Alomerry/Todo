@@ -1,0 +1,5 @@
+const CONSTANT = {
+  OPERATION_DELETE: 1,
+  OPERATION_DONE: 2,
+}
+export default CONSTANT;

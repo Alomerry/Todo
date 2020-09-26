@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://qmgo:120211@cloudmo.top:27017/qmgo
+logging:
+  level:
+    root: debug
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    session:
+      timeout: 30m
