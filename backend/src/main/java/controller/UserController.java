@@ -17,10 +17,10 @@ public class UserController {
 
     @PostMapping("/login")
     Result Login(@ModelAttribute LoginRequest request) {
-//        if (userService.Login(request.getName(), request.getPasswd())) {
-//            System.out.println("success");
-//            return new Result().setCode(ResultCode.OK).setData(new JSONObject());
-//        }
+        if (userService.Login(request.getName(), request.getPasswd())) {
+            System.out.println("success");
+            return new Result().setCode(ResultCode.OK).setData(new JSONObject());
+        }
         return new Result().setCode(ResultCode.FORBIDDEN);
     }
 }

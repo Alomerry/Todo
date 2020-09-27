@@ -7,6 +7,10 @@ import lombok.ToString;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class LoginRequest implements Serializable {
     private String name;
     private String passwd;
