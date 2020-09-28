@@ -31,6 +31,7 @@ export default {
       },
     })
   },
+
   login(name, password) {
     let params = new URLSearchParams();
     params.append('name', name);
