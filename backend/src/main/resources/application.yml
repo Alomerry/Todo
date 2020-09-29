@@ -15,9 +15,11 @@ spring:
     port: 6379
 logging:
   level:
-    root: debug
+    root: warn
 server:
   port: 8088
+  error:
+    path: /error
   tomcat:
     uri-encoding: utf-8
   servlet:

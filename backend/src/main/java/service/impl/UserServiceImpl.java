@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     public boolean Login(String name, String passwd) {
-        User user = userDao.findByNameAndPasswd(name, passwd);
+        User user = userDao.findByNameAndPasswdAndIsDeleted(name, passwd, false);
         if (user != null)
             return true;
         else
@@ -21,6 +21,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public User FindUserByName(String name) {
-        return userDao.findByName(name);
+        return userDao.findByNameAndIsDeleted(name, false);
     }
 }
