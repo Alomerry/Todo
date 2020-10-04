@@ -35,10 +35,10 @@
 			</a-col>
 			<a-col :span="4">
 				<a-select default-value="Done" style="width: 120px" @change="searchByStatus">
-					<a-select-option :value="2">
+					<a-select-option value="done">
 						Done
 					</a-select-option>
-					<a-select-option :value="1">
+					<a-select-option value="undo">
 						Undo
 					</a-select-option>
 				</a-select>

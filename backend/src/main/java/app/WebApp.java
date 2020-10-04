@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication()
-@ComponentScan({"controller", "service"})
+@ComponentScan({"controller", "service","config","interceptor"})
 @EnableMongoRepositories("dao")
 @EnableConfigurationProperties({
         JwtConfig.class,

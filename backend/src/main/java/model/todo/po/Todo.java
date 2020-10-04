@@ -1,18 +1,12 @@
 package model.todo.po;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
+@Data
 public class Todo {
     @Id
     private ObjectId id;

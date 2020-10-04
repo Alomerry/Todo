@@ -1,15 +1,11 @@
 package model.user.vo;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-public class LoginResponse {
+import java.io.Serializable;
+
+@Data
+public class LoginResponse implements Serializable {
     private String id;
     private String name;
     private String accessToken;
