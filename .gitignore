@@ -1,6 +1,6 @@
 # Project exclude paths
+backend/src/main/resources/application-common.yml
 /backend/target/
-/backend/src/main/resources/application.yml
 /frontend/node_modules/
 .idea
 *.iml
