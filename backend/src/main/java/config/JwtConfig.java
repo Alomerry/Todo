@@ -22,10 +22,11 @@ public class JwtConfig {
 
     /**
      * 生成token
+     *
      * @param subject
      * @return
      */
-    public String createToken (String subject){
+    public String createToken(String subject) {
         Date nowDate = new Date();
         Date expireDate = new Date(nowDate.getTime() + expire * 1000);//过期时间
 
@@ -37,36 +38,42 @@ public class JwtConfig {
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
+
     /**
      * 获取token中注册信息
+     *
      * @param token
      * @return
      */
-    public Claims getTokenClaim (String token) {
+    public Claims getTokenClaim(String token) {
         try {
             return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-        }catch (Exception e){
+        } catch (Exception e) {
 //            e.printStackTrace();
             return null;
         }
     }
+
     /**
      * 验证token是否过期失效
+     *
      * @param expirationTime
      * @return
      */
-    public boolean isTokenExpired (Date expirationTime) {
+    public boolean isTokenExpired(Date expirationTime) {
         return expirationTime.before(new Date());
     }
 
     /**
      * 获取token失效时间
+     *
      * @param token
      * @return
      */
     public Date getExpirationDateFromToken(String token) {
         return getTokenClaim(token).getExpiration();
     }
+
     /**
      * 获取用户名从token中
      */
@@ -81,24 +88,4 @@ public class JwtConfig {
         return getTokenClaim(token).getIssuedAt();
     }
 
-    // --------------------- getter & setter ---------------------
-
-    public String getSecret() {
-        return secret;
-    }
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-    public long getExpire() {
-        return expire;
-    }
-    public void setExpire(long expire) {
-        this.expire = expire;
-    }
-    public String getHeader() {
-        return header;
-    }
-    public void setHeader(String header) {
-        this.header = header;
-    }
 }

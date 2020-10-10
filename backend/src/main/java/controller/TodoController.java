@@ -20,7 +20,8 @@ public class TodoController {
     public Result getTodos(GetTodosRequest request, @RequestAttribute String userId) {
         System.out.println(request.toString());
         System.out.println(userId);
-//        List<Todo> todos = todoService.getTodosByUserId(userId);
+        List<Todo> todos = todoService.getTodosByUserId(userId);
+
         return new Result().setCode(ResultCode.OK);
     }
 }

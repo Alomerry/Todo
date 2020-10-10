@@ -3,13 +3,11 @@ package interceptor;
 import config.JwtConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.SignatureException;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,17 +32,18 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             token = request.getParameter(jwtConfig.getHeader());
         }
         if (StringUtils.isEmpty(token)) {
-            throw new SignatureException(jwtConfig.getHeader() + "不能为空");
+            throw new SignatureException("令牌不能为空");
         }
 
         Claims claims = null;
         try {
             claims = jwtConfig.getTokenClaim(token);
             if (claims == null || jwtConfig.isTokenExpired(claims.getExpiration())) {
-                throw new SignatureException(jwtConfig.getHeader() + "失效，请重新登录。");
+                throw new SignatureException("令牌过期，请重新登录。");
             }
         } catch (Exception e) {
-            throw new SignatureException(jwtConfig.getHeader() + "失效，请重新登录。");
+            e.printStackTrace();
+            throw new SignatureException("令牌失效，请重新登录。");
         }
 
         /** 设置 userId 用户ID */
