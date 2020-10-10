@@ -3,4 +3,6 @@ backend/src/main/resources/application-common.yml
 /backend/target/
 /frontend/node_modules/
 .idea
-*.iml
+backend/backend.iml
+frontend/frontend.iml
+Todo.iml

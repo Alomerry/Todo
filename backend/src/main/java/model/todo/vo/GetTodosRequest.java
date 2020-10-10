@@ -1,7 +1,6 @@
 package model.todo.vo;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -12,7 +11,7 @@ public class GetTodosRequest implements Serializable {
     private Integer perPage = 20;
     private String color = "";
     private String status = "undo";
-    private Boolean isAscend = true;
+    private boolean isAscend = true;
     private String sortBy = "createdAt";
     private Integer startAt = null;
     private Integer endAt = null;

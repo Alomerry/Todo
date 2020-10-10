@@ -152,11 +152,10 @@ export default {
       API.login(name, password).then(
           res => {
             this.$message.success("Login success!");
-            console.log(res.data);
             this.$store.dispatch("login", {
-              id: res.data.id,
-              name: res.data.name,
-              accessToken: res.data.accessToken,
+              id: res.data.data.id,
+              name: res.data.data.name,
+              accessToken: res.data.data.accessToken,
             });
             setTimeout(function () {
               window.location = "/todos";

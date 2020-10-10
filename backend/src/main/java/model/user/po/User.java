@@ -1,19 +1,17 @@
 package model.user.po;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.bson.types.ObjectId;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
-@ToString
-public class User{
+@Data
+@Document
+public class User implements Serializable {
     @Id
-    private ObjectId id;
+    private String id;
     private String name;
     private String nickName;
     private String passwd;

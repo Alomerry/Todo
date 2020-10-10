@@ -26,7 +26,7 @@
               <span style="float: right;margin-right: 5em">
 								<a-dropdown>
                   <a class="ant-dropdown-link" @click="e => e.preventDefault()">
-                    {{$store.state.user.name}} <a-icon type="down"/>
+                    {{ $store.state.user.name }} <a-icon type="down"/>
                   </a>
                   <a-menu slot="overlay">
                     <a-menu-item>
@@ -49,60 +49,60 @@
 </template>
 <script>
 
-  export default {
-    name: "App",
-    data() {
-      return {
-        collapsed: false,
-        selectedMenuItemKey: 1,
-      };
+export default {
+  name: "App",
+  data() {
+    return {
+      collapsed: false,
+      selectedMenuItemKey: 1,
+    };
+  },
+  mounted() {
+  },
+  methods: {
+    selectMeunItem(item) {
+      this.selectedMenuItemKey = item.key;
     },
-    mounted() {
-    },
-    methods: {
-      selectMeunItem(item) {
-        this.selectedMenuItemKey = item.key;
-      },
-      logout() {
-        this.$store.dispatch('logout');
-        setTimeout(function () {
-          window.location = '/login';
-        }, 300);
-      }
-    },
-    computed: {
-      isLogin() {
-        return this.$store.state.user.accessToken;
-      }
-    },
-  }
+    logout() {
+      this.$store.dispatch('logout');
+      setTimeout(function () {
+        window.location = '/login';
+      }, 300);
+    }
+  },
+  computed: {
+    isLogin() {
+      return this.$store.state.user.accessToken;
+    }
+  },
+}
 
 </script>
 <style>
-  #components-layout-demo-side .logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
-  }
+#components-layout-demo-side .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
 
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-  #nav {
-    padding: 30px;
-  }
+#nav {
+  padding: 30px;
+}
 
-  #nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
 
-  #nav a.router-link-exact-active {
-    color: #42b983;
-  }
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>

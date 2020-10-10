@@ -36,7 +36,7 @@ public class UserController {
         // todo 需要封装
         if (userService.Login(request.getName(), request.getPassword())) {
             User user = userService.FindUserByName(request.getName());
-            LoginResponse response = new LoginResponse(user.getId().toHexString(), user.getName(), jwtConfig.createToken(user.getId().toHexString()));
+            LoginResponse response = new LoginResponse(user.getId(), user.getName(), jwtConfig.createToken(user.getId()));
             try {
                 Map<String, Object> responseMapper = MapUtils.ConvertObjectToMap(response);
                 JSONObject res = new JSONObject(responseMapper);
