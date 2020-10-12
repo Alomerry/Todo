@@ -30,7 +30,7 @@
 				<div>{{formatDateTime('doneTime')}}</div>
 			</a-col>
 			<a-col :span="2">
-				<div v-if="todo.status == 2">
+				<div v-if="todo.status == 'done'">
 					<a-tag color="#87d068">done</a-tag>
 				</div>
 				<div v-else>
