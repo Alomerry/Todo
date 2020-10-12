@@ -178,8 +178,9 @@ export default {
           res => {
             if (res.data.code == 200) {
               this.$message.success("Register success!");
-            }else{
+            } else {
               this.$message.error("Register failed!");
+              console.log(res.data.message);
             }
           },
           error => {

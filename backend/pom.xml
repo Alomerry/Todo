@@ -14,7 +14,7 @@
         <spring.framework.version>5.2.9.RELEASE</spring.framework.version>
         <spring.data.version>3.0.4.RELEASE</spring.data.version>
         <spring.boot.version>2.3.4.RELEASE</spring.boot.version>
-        <org.mongodb.version>3.12.7</org.mongodb.version>
+        <org.mongodb.version>4.1.0</org.mongodb.version>
         <spring.data.redis.version>2.3.4.RELEASE</spring.data.redis.version>
         <redis.clients.version>3.3.0</redis.clients.version>
         <com.fasterxml.jackson.core.version>2.11.2</com.fasterxml.jackson.core.version>
@@ -22,7 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
+            <artifactId>mongodb-driver-sync</artifactId>
             <version>${org.mongodb.version}</version>
         </dependency>
         <dependency>

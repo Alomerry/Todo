@@ -1,7 +1,9 @@
 package model.user.po;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -15,9 +17,11 @@ public class User implements Serializable {
     private String name;
     private String nickName;
     private String passwd;
-    private Date createdAt;
-    private Date updatedAt;
-    private Boolean isDeleted;
+    @CreatedDate
+    private long createdAt;
+    @LastModifiedDate
+    private long updatedAt;
+    private boolean isDeleted;
 
     public User(String name, String passwd) {
         this.name = name;

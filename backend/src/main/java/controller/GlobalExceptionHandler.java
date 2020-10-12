@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler
-    @ResponseBody
-    public Result errorHandler(Exception e) throws Exception {
-        return new Result().setCode(ResultCode.BAD_REQUEST).setMessage(e.getMessage());
-    }
+//    @ExceptionHandler
+//    @ResponseBody
+//    public Result errorHandler(Exception e) throws Exception {
+//        return new Result().setCode(ResultCode.BAD_REQUEST).setMessage(e.getMessage());
+//    }
 }
