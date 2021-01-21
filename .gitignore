@@ -6,3 +6,4 @@ backend/src/main/resources/application-common.yml
 backend/backend.iml
 frontend/frontend.iml
 Todo.iml
+.gradles
