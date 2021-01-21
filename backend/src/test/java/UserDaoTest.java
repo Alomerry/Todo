@@ -1,5 +1,5 @@
 import app.WebApp;
-import dao.UserDao;
+import dao.MemberDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = WebApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserDaoTest {
     @Autowired
-    private UserDao userDao;
+    private MemberDao userDao;
 
     @Value("${logging.level.root}")
     private String level;
