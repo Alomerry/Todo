@@ -1,6 +1,5 @@
 import app.WebApp;
 import dao.UserDao;
-import model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

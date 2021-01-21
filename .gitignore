@@ -1,4 +1,8 @@
 # Project exclude paths
+backend/src/main/resources/application-common.yml
 /backend/target/
-/frontend/dist/js/
 /frontend/node_modules/
+.idea
+backend/backend.iml
+frontend/frontend.iml
+Todo.iml
