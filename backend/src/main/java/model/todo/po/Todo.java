@@ -13,14 +13,14 @@ import java.util.Date;
 public class Todo implements Serializable {
     @Id
     private String id;
-    private String userId;
-    private Long doneAt;
+    private String memberId;
+    private Date doneAt;
     private String content;
     private String color;
     private String status;
     @CreatedDate
-    private long createdAt;
+    private Date createdAt;
     @LastModifiedDate
-    private long updatedAt;
+    private Date updatedAt;
     private boolean isDeleted;
 }
