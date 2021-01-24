@@ -8,6 +8,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface TodoDao extends MongoRepository<Todo, ObjectId> {
-    List<Todo> findAllByUserIdAndIsDeleted(ObjectId userId,boolean isDeleted);
+    List<Todo> findAllByMemberIdAndIsDeleted(ObjectId userId,boolean isDeleted);
 //    Page<Todo>
 }

@@ -7,6 +7,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Document
@@ -18,9 +19,9 @@ public class Member implements Serializable {
     private String email;
     private String passwd;
     @CreatedDate
-    private long createdAt;
+    private Date createdAt;
     @LastModifiedDate
-    private long updatedAt;
+    private Date updatedAt;
     private boolean isDeleted;
 
     public Member(String name, String passwd) {
