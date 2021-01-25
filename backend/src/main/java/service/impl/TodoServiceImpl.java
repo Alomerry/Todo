@@ -15,9 +15,9 @@ public class TodoServiceImpl implements TodoService {
     private TodoDao todoDao;
 
     @Override
-    public List<Todo> getTodosByUserId(String userId) {
-        ObjectId uid = new ObjectId(userId);
-        List<Todo> todos = todoDao.findAllByUserIdAndIsDeleted(uid, false);
+    public List<Todo> getTodosByUserId(String memberId) {
+        ObjectId uid = new ObjectId(memberId);
+        List<Todo> todos = todoDao.findAllByMemberIdAndIsDeleted(uid, false);
         return todos;
     }
 }

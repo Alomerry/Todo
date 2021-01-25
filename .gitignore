@@ -2,7 +2,10 @@
 backend/src/main/resources/application-common.yml
 /backend/target/
 /frontend/node_modules/
+/frontend/dist
 .idea
 backend/backend.iml
 frontend/frontend.iml
 Todo.iml
+.gradles
+.DS_Store
