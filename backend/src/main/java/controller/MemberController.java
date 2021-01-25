@@ -1,9 +1,11 @@
 package controller;
 
-import com.alibaba.fastjson.JSONObject;
 import config.JwtConfig;
 import core.Result;
 import core.ResultCode;
+import exception.base.InvalidParameterException;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
 import model.member.po.Member;
 import model.member.vo.LoginRequest;
 import model.member.vo.LoginResponse;
@@ -13,14 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import service.MemberService;
-import utils.MapUtils;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.Map;
 
 @RestController
-public class MemberController {
+public class MemberController extends BaseController {
 
     @Resource
     private MemberService memberService;
@@ -29,36 +29,30 @@ public class MemberController {
     private JwtConfig jwtConfig;
 
     @PostMapping(value = "/login")
-    Result Login(@Valid @RequestBody LoginRequest request, BindingResult result) {
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "test")
+    })
+    LoginResponse Login(@Valid @RequestBody LoginRequest request, BindingResult result) throws Exception {
         if (result.hasErrors()) {
-            return new Result().setCode(ResultCode.FORBIDDEN).setMessage(result.getFieldError().getDefaultMessage());
+            throw new InvalidParameterException(result.getFieldError().getDefaultMessage(), new String[]{result.getFieldError().getField()});
         }
-        // todo 需要封装
         if (memberService.Login(request.getName(), request.getPassword())) {
             Member user = memberService.FindUserByName(request.getName());
-            LoginResponse response = new LoginResponse(user.getId(), user.getName(), jwtConfig.createToken(user.getId()));
-            try {
-                Map<String, Object> responseMapper = MapUtils.ConvertObjectToMap(response);
-                JSONObject res = new JSONObject(responseMapper);
-                return new Result().setCode(ResultCode.OK).setData(res);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-                return new Result().setCode(ResultCode.FORBIDDEN);
-            }
+            return new LoginResponse(user.getId(), user.getName(), jwtConfig.createToken(user.getId()));
         } else {
-            return new Result().setCode(ResultCode.FORBIDDEN);
+            throw new InvalidParameterException("账号或密码错误", null);
         }
     }
 
-    @PostMapping("/register")
-    Result Register(@Valid @RequestBody RegisterRequest request, BindingResult result) {
+    @PostMapping(value = "/register")
+    Object Register(@Valid @RequestBody RegisterRequest request, BindingResult result) throws Exception {
         if (result.hasErrors()) {
             return new Result().setCode(ResultCode.FORBIDDEN).setMessage(result.getFieldError().getDefaultMessage());
         }
         if (memberService.Register(request.getName(), request.getPassword(), request.getRepeatPassword())) {
-            return new Result().setCode(ResultCode.OK);
-        } else {
-            return new Result().setCode(ResultCode.FORBIDDEN);
+            return null;
         }
+        // todo
+        return null;
     }
 }

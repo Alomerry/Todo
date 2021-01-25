@@ -6,13 +6,14 @@ import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-public class TokenInterceptor extends HandlerInterceptorAdapter {
+public class TokenInterceptor implements HandlerInterceptor {
 
     @Autowired
     private JwtConfig jwtConfig;
@@ -24,7 +25,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
         /** 地址过滤 */
         String uri = request.getRequestURI();
         // todo
-        if (uri.contains("/login") || uri.contains("/register")||uri.contains("/error")) {
+        if (uri.contains("/login") || uri.contains("/register")||uri.contains("/error")|| uri.contains("swagger")||uri.contains("api")) {
             return true;
         }
         /** Token 验证 */

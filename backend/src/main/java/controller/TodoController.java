@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-public class TodoController {
+public class TodoController extends BaseController {
 
     @Resource
     private TodoService todoService;
@@ -25,8 +25,8 @@ public class TodoController {
         System.out.println(userId);
         JSONObject result = new JSONObject();
         List<Todo> todos = todoService.getTodosByUserId(userId);
-        result.put("todos",todos);
-        result.put("total",todos.size());
+        result.put("todos", todos);
+        result.put("total", todos.size());
         return new Result().setCode(ResultCode.OK).setData(result);
     }
 }

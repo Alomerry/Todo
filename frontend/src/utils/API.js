@@ -45,6 +45,7 @@ export default {
             }
         )
     },
+
     register(name, password, repeatPassword) {
         let params = {
             'name': name,

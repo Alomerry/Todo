@@ -1,6 +1,7 @@
 package service.impl;
 
 import dao.MemberDao;
+import exception.base.InvalidParameterException;
 import model.member.po.Member;
 import org.springframework.stereotype.Service;
 import service.MemberService;
@@ -12,30 +13,29 @@ public class MemberServiceImpl implements MemberService {
     @Resource
     private MemberDao memberDao;
 
-    public boolean Login(String name, String password) {
-        Member user = memberDao.findByNameAndPasswdAndIsDeleted(name, password, false);
-        if (user != null)
+    public boolean Login(String userName, String passwd) {
+        Member member = memberDao.findByNameAndPasswdAndIsDeleted(userName, passwd, false);
+        if (member != null)
             return true;
         else
             return false;
     }
 
     @Override
-    public boolean Register(String name, String password, String repeatPassword) {
-        if (!password.equals(repeatPassword)) {
-            return false;
+    public boolean Register(String userName, String passwd, String repeatPasswd) {
+        if (!passwd.equals(repeatPasswd)) {
+            throw new InvalidParameterException("两次密码不一致", new Object[]{"password", "repeat password"});
         }
-        if (memberDao.findByNameAndIsDeleted(name, false) != null) {
-            // todo throw 错误或是怎么样。。。区分注册失败类型
-            return false;
+        if (memberDao.findByNameAndIsDeleted(userName, false) != null) {
+            throw new InvalidParameterException("用户名已存在", new Object[]{"user name"});
         }
-        if (memberDao.insert(new Member(name, password)) != null) {
+        if (memberDao.insert(new Member(userName, passwd)) != null) {
             return true;
         }
-        return false;
+        throw new InvalidParameterException("未知错误", null);
     }
 
-    public Member FindUserByName(String name) {
-        return memberDao.findByNameAndIsDeleted(name, false);
+    public Member FindUserByName(String userName) {
+        return memberDao.findByNameAndIsDeleted(userName, false);
     }
 }

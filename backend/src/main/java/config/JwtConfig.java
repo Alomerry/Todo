@@ -18,6 +18,11 @@ import java.util.Date;
 public class JwtConfig {
     private String secret;
     private long expire;
+
+    public String getHeader() {
+        return "accessToken";
+    }
+
     private String header;
 
     /**

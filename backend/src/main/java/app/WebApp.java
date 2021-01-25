@@ -7,11 +7,13 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
 @SpringBootApplication()
 @EnableMongoAuditing
-@ComponentScan({"controller", "service", "config", "interceptor"})
+@ComponentScan({"controller", "service", "config", "interceptor","aop"})
 @EnableMongoRepositories("dao")
+@EnableOpenApi
 @EnableConfigurationProperties({
         JwtConfig.class,
 })

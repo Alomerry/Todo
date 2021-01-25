@@ -1,5 +1,6 @@
 package model.member.vo;
 
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,6 @@ public class LoginRequest implements Serializable {
     private String name;
 
     @NotNull(message = "password field can't be null")
-    @Size(min = 6, max = 18, message = "name field length invalid")
+    @Size(min = 6, max = 18, message = "password field length invalid")
     private String password;
 }
